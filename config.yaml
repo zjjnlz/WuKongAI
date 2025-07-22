@@ -1,0 +1,27 @@
+# 键盘控制配置
+key_mapping:
+  idle: null        # 无操作
+  dodge: "space"    # 闪避键
+
+# 热键配置
+hotkeys:
+  ai_control_start: "ctrl+shift+a"  # 开始AI控制
+  ai_control_stop: "ctrl+shift+d"   # 停止AI控制
+  exit_program: "ctrl+shift+q"      # 退出程序
+
+# 截图配置
+screen_capture:
+  window_title: "b1  "             # 游戏窗口标题
+  output_size: null          # 输出尺寸
+  grayscale: false                # 是否转为灰度
+  # 窗口偏移配置
+  offsets:
+    left: 11
+    top: 84
+    right: 11
+    bottom: 52
+  # 截图配置
+  # 黑边处理参数
+  black_threshold: 30
+  black_percentage: 0.9
+  
