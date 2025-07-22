@@ -1,7 +1,6 @@
 import time
 import pygetwindow as gw
 import dxcam
-import ctypes
 import cv2
 import numpy as np
 
@@ -34,12 +33,6 @@ class ScreenCapturer:
         # 初始化屏幕捕获器
         self.camera = dxcam.create()
         
-        # Windows API 常量
-        self.user32 = ctypes.windll.user32
-        self.SW_SHOW = 5
-        self.SWP_NOMOVE = 0x0002
-        self.SWP_NOSIZE = 0x0001
-        
         # 黑边处理参数
         self.BLACK_THRESHOLD = black_threshold
         self.BLACK_PERCENTAGE = black_percentage
@@ -53,19 +46,6 @@ class ScreenCapturer:
         except Exception as e:
             print(f"查找窗口时出错: {e}")
             return None
-    
-    def _activate_window(self):
-        """激活游戏窗口到前台"""
-        try:
-            # 确保窗口可见
-            self.user32.ShowWindow(self.hwnd, self.SW_SHOW)
-            
-            # 激活窗口
-            self.user32.SetForegroundWindow(self.hwnd)
-            
-            time.sleep(0.1)  # 等待窗口激活
-        except Exception as e:
-            print(f"激活窗口失败: {e}")
     
     def _remove_black_borders(self, image):
         """消除图像上下的黑边"""
@@ -106,9 +86,6 @@ class ScreenCapturer:
     def capture(self):
         """捕获游戏窗口截图（确保窗口可见）"""
         try:
-            # 激活窗口
-            self._activate_window()
-            
             # 获取窗口位置
             left, top = self.window.topleft
             right, bottom = self.window.bottomright

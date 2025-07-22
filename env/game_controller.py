@@ -26,6 +26,7 @@ class GameController:
         """开始AI控制"""
         self.ai_control_active = True
         print("AI control started")
+        print(f"AI control status: {self.ai_control_active}")  # 添加调试信息
     
     def stop_ai_control(self):
         """停止AI控制"""
